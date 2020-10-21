@@ -31,14 +31,22 @@ for (let i = 0; i <= 20; i++) {
 }
 
 const ambientLight = new THREE.AmbientLight(0x404040);
-const directionalLight = new THREE.DirectionalLight(0xf0f0f0, 0.5);
+scene.add(ambientLight);
+
+var hlight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+hlight.position.set(-9, -3, -5);
+scene.add(hlight);
+hlight.castShadow = true;
+hlight.shadowDarkness = 1;
+hlight.shadowMapSoft = true;
+
+const directionalLight = new THREE.DirectionalLight(0xf0f0f0, 0.1);
 directionalLight.rotation.z = 5;
 directionalLight.castShadow = true;
-directionalLight.position.set(-3, 1, 5);
+directionalLight.shadowDarkness = 1;
+directionalLight.shadowMapSoft = true;
 scene.fog = new THREE.FogExp2(0xf0f0f0, 0.2);
 renderer.setClearColor(scene.fog.color);
-
-scene.add(ambientLight);
 scene.add(directionalLight);
 
 // let loader = new THREE.GLTFLoader();

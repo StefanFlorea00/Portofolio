@@ -6,36 +6,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div class="canvas-wrapper"></div>
     <div class="page-wrapper">
       <nav>
         <ul>
-          <li class="myButton">Home</li>
-          <li class="myButton">About</li>
-          <li class="myButton">Projects</li>
-          <li class="myButton">Contact</li>
+          <li class="myButton"><a href="#title">Home</a></li>
+          <li class="myButton"><a href="#about">About</a</li>
+          <li class="myButton"><a href="#projects">Projects</a></li>
+          <li class="myButton"><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <div class="section-title">
+      <div id="title" class="section-title">
         <div class="title-wrapper">
           <h1>Stefan Florea</h1>
-          <p>Uga buga</p>
+          <p>Multimedia design student</p>
           <div class="btn-wrapper">
             <button class="myButton">Projects</button>
             <button class="myButton">About me</button>
           </div>
         </div>
       </div>
-      <div class="section-about">
+      <div id="about" class="section-about">
         <h1>About me</h1>
         <div class="flex-wrapper">
           <img class="about-me-img" src="me.jpg" />
           <p>Hello I am nice guy ok?</p>
         </div>
       </div>
-      <div class="section-projects">
+      <div id="projects" class="section-projects">
         <h1>Projects</h1>
         <div class="flex-wrapper">
           <div class="project"></div>
@@ -44,11 +45,11 @@
           <div class="project"></div>
         </div>
       </div>
-      <div class="section-contact">
+      <div id="contact" class="section-contact">
         <h1>Contact</h1>
-        <div class="flex-wrapper">
-          <p>Hello I am nice guy ok?</p>
-        </div>
+        <p>LinkedIn:</p>
+        <p>Facebook</p>
+        <p>Email: stefflr@yahoo.com</p>
       </div>
       <footer></footer>
     </div>
