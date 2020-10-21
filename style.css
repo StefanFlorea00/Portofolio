@@ -3,9 +3,26 @@
   font-family: "Montserrat", sans-serif;
 }
 
+/* THREEJS */
+canvas {
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  position: fixed;
+}
+
+.canvas-wrapper {
+  z-index: 0;
+}
+
+/* WEBSITE */
 body {
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .page-wrapper {
@@ -16,19 +33,11 @@ body {
     "side projects"
     "side contact"
     "footer footer";
-  grid-template-columns: 2fr 3fr;
-  scroll-snap-type: y mandatory;
-}
-
-canvas {
-  width: 100%;
-  height: 100%;
+  grid-template-columns: 3fr 3fr;
+  position: absolute;
   z-index: 5;
-  position: fixed;
-}
-
-.canvas-wrapper {
-  z-index: 0;
+  height: 5000px;
+  width: 100%;
 }
 
 .fill {
@@ -41,36 +50,7 @@ canvas {
   background: transparent; 
 } */
 
-.container {
-  position: relative;
-  height: 105vh;
-  width: 100%;
-  overflow: auto;
-  /* scroll-snap-type: y mandatory; */
-}
-
-.page-wrapper {
-  position: absolute;
-  z-index: 5;
-  width: 100%;
-}
-
-.title-wrapper {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 200px;
-  width: 500px;
-  display: block;
-}
-
-h1 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 100;
-  font-size: 65px;
-  margin-bottom: 10px;
-}
-
+/* NAV */
 nav a {
   text-decoration: none;
   color: black;
@@ -95,6 +75,30 @@ nav ul li {
   padding: 10px;
 }
 
+/* TITLE */
+
+.section-title {
+  grid-area: head;
+  scroll-snap-align: start;
+  height: 125vh;
+}
+
+.title-wrapper {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  width: 500px;
+  display: block;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  font-size: 65px;
+  margin-bottom: 10px;
+}
+
 .myButton {
   background-color: #eae0c2;
   border-radius: 5px;
@@ -116,6 +120,8 @@ nav ul li {
   top: 1px;
 }
 
+/* ABOUT */
+
 .section-about {
   opacity: 0;
   grid-area: about;
@@ -123,17 +129,31 @@ nav ul li {
   height: 100vh;
 }
 
-.section-title {
-  grid-area: head;
-  scroll-snap-align: start;
-  height: 100vh;
+.about-me-img {
+  height: 400px;
+  margin-right: 40px;
 }
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* PROJECTS */
 
 .section-projects {
   opacity: 0;
   grid-area: projects;
   scroll-snap-align: start;
 }
+
+.project {
+  height: 300px;
+  width: 300px;
+  background-color: red;
+  margin: 5px;
+}
+
+/* CONTACT */
 
 .section-contact {
   opacity: 0;
@@ -142,31 +162,11 @@ nav ul li {
   height: 100vh;
 }
 
-footer {
-  grid-area: footer;
-  background-color: gray;
-  height: 25vh;
-}
-
-.about-me-img {
-  height: 400px;
-}
-
-.flex-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
+/* TEXT FADE */
 
 .inView {
   opacity: 1;
   animation: fadeInText 0.5s ease-in-out;
-}
-
-.project {
-  height: 300px;
-  width: 300px;
-  background-color: red;
-  margin: 5px;
 }
 
 @keyframes fadeInText {
@@ -178,4 +178,12 @@ footer {
     opacity: 1;
     transform: translateY(0%);
   }
+}
+
+/* FOOTER */
+
+footer {
+  grid-area: footer;
+  background-color: gray;
+  height: 25vh;
 }
