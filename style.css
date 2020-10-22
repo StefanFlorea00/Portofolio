@@ -36,7 +36,6 @@ html {
   grid-template-columns: 3fr 3fr;
   position: absolute;
   z-index: 5;
-  height: 5000px;
   width: 100%;
 }
 

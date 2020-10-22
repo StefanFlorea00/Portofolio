@@ -1,5 +1,6 @@
 const scene = new THREE.Scene();
 let CAMERASTOP = false;
+let composer;
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.updateProjectionMatrix();
@@ -17,7 +18,7 @@ for (let i = 0; i <= 30; i++) {
   const geometry = new THREE.BoxGeometry(0.5, 3, 0.5);
   const cube = new THREE.Mesh(geometry, material);
   scene.add(cube);
-  cube.position.set(getRandomNr(-8, 8), getRandomNr(-2.5, -1.5), getRandomNr(-3, -10));
+  cube.position.set(getRandomNr(-8, 8), getRandomNr(-2.5, -1), getRandomNr(-3, -10));
 }
 
 const geometry = new THREE.BoxGeometry(25, 0.2, 35);
@@ -25,24 +26,37 @@ const ground = new THREE.Mesh(geometry, material);
 scene.add(ground);
 ground.position.set(0, -2.5, -15);
 
-const ambientLight = new THREE.AmbientLight(0x404040);
-scene.add(ambientLight);
-
-const hlight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-hlight.position.set(-9, -3, -5);
-scene.add(hlight);
-hlight.castShadow = true;
-hlight.shadowDarkness = 1;
-hlight.shadowMapSoft = true;
-
-const directionalLight = new THREE.DirectionalLight(0xf0f0f0, 0.1);
-directionalLight.rotation.z = 5;
+let directionalLight = new THREE.DirectionalLight(0xffffff,2);
+directionalLight.position.set(1,1,-1);
 directionalLight.castShadow = true;
-directionalLight.shadowDarkness = 1;
-directionalLight.shadowMapSoft = true;
-scene.fog = new THREE.FogExp2(0xf0f0f0, 0.2);
-renderer.setClearColor(scene.fog.color);
 scene.add(directionalLight);
+
+let circleGeo = new THREE.CircleGeometry(35,50);
+let circleMat = new THREE.MeshBasicMaterial({color: 0x666666}); // 0xaeaeae
+let circle = new THREE.Mesh(circleGeo,circleMat);
+circle.position.set(65,-2,-150);
+circle.rotation.set(0,0,0);
+scene.add(circle);
+
+scene.fog = new THREE.FogExp2(0xaaaaaa, 0.2);
+renderer.setClearColor(scene.fog.color);
+
+let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, circle, {
+  resolutionScale: 1,
+  density: 1,
+  decay: 0.94,
+  weight: 0.9,
+  samples: 65
+});
+
+let renderPass = new POSTPROCESSING.RenderPass(scene, camera);
+let effectPass = new POSTPROCESSING.EffectPass(camera, godraysEffect);
+effectPass.renderToScreen = true;
+
+composer = new POSTPROCESSING.EffectComposer(renderer);
+composer.addPass(renderPass);
+composer.addPass(effectPass);
+
 
 let loader = new THREE.GLTFLoader();
 let cameraObj;
@@ -63,7 +77,7 @@ function animate() {
   if (cameraObj) cameraObj.rotation.y += 0.005;
 
   requestAnimationFrame(animate);
-  renderer.render(scene, camera);
+  composer.render(0.1);
 }
 animate();
 
