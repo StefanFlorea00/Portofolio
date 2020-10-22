@@ -42,7 +42,7 @@ scene.add(circle);
 var light = new THREE.AmbientLight(0x8e8e8e); // soft white light
 scene.add(light);
 
-scene.fog = new THREE.FogExp2(0xababab, 0.2);
+scene.fog = new THREE.FogExp2(0xcccccc, 0.2);
 renderer.setClearColor(scene.fog.color);
 
 let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, circle, {
@@ -107,6 +107,6 @@ function getRandomNr(min, max) {
 // }
 
 function updateCamera(ev) {
-  if (window.scrollY <= 1200) camera.rotation.y = -window.scrollY / 2500.0;
+  if (window.scrollY <= 800) camera.rotation.y = -window.scrollY / 2000.0;
 }
 window.addEventListener("scroll", updateCamera);

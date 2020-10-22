@@ -42,6 +42,8 @@ p {
   grid-template-columns: 2fr 3fr;
   position: absolute;
   z-index: 5;
+  box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.55);
+
   width: 100%;
 }
 
