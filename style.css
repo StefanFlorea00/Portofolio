@@ -1,6 +1,7 @@
 * {
   /* font-family: "Noto Sans", sans-serif; */
   font-family: "Montserrat", sans-serif;
+  color: white;
 }
 
 /* THREEJS */
@@ -25,15 +26,20 @@ html {
   scroll-behavior: smooth;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 .page-wrapper {
   display: grid;
   grid-template-areas:
     "head head"
     "side about"
     "side projects"
+    "side personal"
     "side contact"
     "footer footer";
-  grid-template-columns: 3fr 3fr;
+  grid-template-columns: 2fr 3fr;
   position: absolute;
   z-index: 5;
   width: 100%;
@@ -133,6 +139,10 @@ h1 {
   margin-right: 40px;
 }
 
+.text-wrapper {
+  width: 50%;
+}
+
 .flex-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -146,10 +156,53 @@ h1 {
 }
 
 .project {
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 400px;
   background-color: red;
   margin: 5px;
+  position: relative;
+  padding: 5px;
+  transition: all 0.2s ease-out;
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0px 0px 25px 0px rgba(0, 0, 0, 0.25);
+}
+
+.project:hover {
+  transform: scale(1.02);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+#coloring-book {
+  background-image: url("ColoringBook.png");
+}
+
+#snif {
+  background-image: url("Snif.png");
+}
+
+#serie {
+  background-image: url("Serie.png");
+}
+
+#kopenhagen {
+  background-image: url("Kopenhagen.png");
+}
+
+.project-text {
+  position: absolute;
+  top: 75%;
+  margin-left: 15px;
+  color: black;
+}
+
+/* PERSONAL */
+
+.section-personal {
+  opacity: 0;
+  grid-area: personal;
+  scroll-snap-align: start;
 }
 
 /* CONTACT */
