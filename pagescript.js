@@ -1,6 +1,7 @@
 let elementsArray = document.querySelectorAll(".page-wrapper div");
-console.log(elementsArray);
 window.addEventListener("scroll", fadeIn);
+
+fadeIn();
 
 function fadeIn() {
   for (let i = 0; i < elementsArray.length; i++) {
@@ -13,4 +14,3 @@ function fadeIn() {
     }
   }
 }
-fadeIn();
