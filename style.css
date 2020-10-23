@@ -105,6 +105,10 @@ nav ul .nav-button:nth-child(5) {
   margin-left: auto;
 }
 
+nav ul .nav-button:nth-child(5):hover {
+  background-color: rgba(245, 133, 133, 1);
+}
+
 /* TITLE */
 
 .section-title {
@@ -130,6 +134,13 @@ h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 100;
   font-size: 65px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  font-size: 35px;
   margin-bottom: 30px;
 }
 
@@ -170,6 +181,10 @@ h1 {
   grid-area: about;
   scroll-snap-align: start;
   height: 100vh;
+}
+
+.section-about p:first-child {
+  margin-top: 0px;
 }
 
 .about-me-img {

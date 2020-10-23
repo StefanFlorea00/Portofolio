@@ -5,6 +5,7 @@ let sunGeo, sunMat;
 let spiral;
 let directionalLight;
 let camera, renderer;
+let controls;
 
 let bgOn = true;
 document.querySelector("#bg-btn").addEventListener("click", toggle3D);
@@ -28,19 +29,21 @@ function init() {
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  // controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   document.querySelector(".canvas-wrapper").appendChild(renderer.domElement);
 
+  addGeometry();
   addLights();
   addPostProcess();
-  addGeometry();
   animate();
 }
 init();
 
 function addGeometry() {
   let loader = new THREE.GLTFLoader();
-  let spiral;
   loader.load("Thing.gltf", function (gltf) {
     spiral = gltf.scene.children[0];
     spiral.position.set(-0.1, 0.5, -10);
@@ -57,15 +60,16 @@ function addGeometry() {
 
 function addPostProcess() {
   let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, sun, {
-    resolutionScale: 1,
-    density: 2,
+    resolutionScale: 0.5,
+    density: 3,
     decay: 0.8,
     weight: 0.9,
-    samples: 45,
+    samples: 100,
   });
 
   let renderPass = new POSTPROCESSING.RenderPass(scene, camera);
   let effectPass = new POSTPROCESSING.EffectPass(camera, godraysEffect);
+
   effectPass.renderToScreen = true;
 
   composer = new POSTPROCESSING.EffectComposer(renderer);
@@ -82,12 +86,16 @@ function addLights() {
   sunGeo = new THREE.CircleGeometry(35, 50);
   sunMat = new THREE.MeshBasicMaterial({ color: 0x9bc1e4 }); // 0xaeaeae
   sun = new THREE.Mesh(sunGeo, sunMat);
-  sun.position.set(-70, -30, -150);
+  sun.position.set(-55, -35, -100);
   sun.rotation.set(0, 0, 0);
   scene.add(sun);
 
-  var light = new THREE.AmbientLight(0x3e3e3e); // soft white light
-  scene.add(light);
+  // var light = new THREE.AmbientLight(0x3e3e3e); // soft white light
+  // scene.add(light);
+
+  var hemiLight = new THREE.HemisphereLight(0xffffff, 0x3e3e3e);
+  hemiLight.position.set(0, 1000, 0);
+  scene.add(hemiLight);
 
   scene.fog = new THREE.FogExp2(0xcccccc, 0.2);
   renderer.setClearColor(scene.fog.color);
@@ -119,4 +127,10 @@ function updateCamera(ev) {
   if (window.scrollY <= 800) camera.rotation.y = -window.scrollY / 2000.0;
 }
 
+function moveCameraMouse(ev) {
+  console.log(ev.clientX);
+  console.log(ev.clientY);
+}
+
+window.addEventListener("mousemove", moveCameraMouse);
 window.addEventListener("scroll", updateCamera);
