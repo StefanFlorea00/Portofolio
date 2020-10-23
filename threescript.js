@@ -2,7 +2,7 @@ const scene = new THREE.Scene();
 let CAMERASTOP = false;
 let composer, sun;
 let sunGeo, sunMat;
-let spiral;
+let spiral, cube, cube2;
 let directionalLight;
 let camera, renderer;
 let controls;
@@ -56,6 +56,18 @@ function addGeometry() {
     });
     scene.add(gltf.scene);
   });
+
+  const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  const geometry2 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+  cube = new THREE.Mesh(geometry, material);
+  cube2 = new THREE.Mesh(geometry2, material);
+  cube.position.set(0, -2, -3);
+  cube.rotation.set(0, 1, 1);
+  scene.add(cube);
+  cube2.position.set(0, -4, -3);
+  cube2.rotation.set(0, 1, 1);
+  scene.add(cube2);
 }
 
 function addPostProcess() {
@@ -107,6 +119,14 @@ function animate() {
     if (camera.position.z <= -10) camera.position.z = 0;
   }
 
+  cube.position.z -= 0.005;
+  cube.rotation.y += 0.01;
+  cube.rotation.z += 0.01;
+
+  cube2.position.z -= 0.005;
+  cube2.rotation.y += 0.01;
+  cube2.rotation.z += 0.01;
+
   if (spiral) spiral.rotation.z += 0.001;
 
   render();
@@ -125,6 +145,8 @@ function getRandomNr(min, max) {
 
 function updateCamera(ev) {
   if (window.scrollY <= 800) camera.rotation.y = -window.scrollY / 2000.0;
+  cube.position.y = -2 + window.scrollY / 350.0;
+  cube2.position.y = -4.3 + window.scrollY / 350.0;
 }
 
 function moveCameraMouse(ev) {
