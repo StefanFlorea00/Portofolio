@@ -72,7 +72,7 @@ function addGeometry() {
 
 function addPostProcess() {
   let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, sun, {
-    resolutionScale: 0.5,
+    resolutionScale: 0.1,
     density: 3,
     decay: 0.8,
     weight: 0.9,
@@ -145,8 +145,8 @@ function getRandomNr(min, max) {
 
 function updateCamera(ev) {
   if (window.scrollY <= 800) camera.rotation.y = -window.scrollY / 2000.0;
-  cube.position.y = -2 + window.scrollY / 350.0;
-  cube2.position.y = -4.3 + window.scrollY / 350.0;
+  cube.position.y = -2.3 + window.scrollY / 400.0;
+  cube2.position.y = -4.5 + window.scrollY / 400.0;
 }
 
 function moveCameraMouse(ev) {
