@@ -229,19 +229,19 @@ h2 {
 }
 
 #coloring-book {
-  background-image: url("ColoringBook.png");
+  background-image: url("img/ColoringBook.png");
 }
 
 #snif {
-  background-image: url("Snif.png");
+  background-image: url("img/Snif.png");
 }
 
 #serie {
-  background-image: url("Serie.png");
+  background-image: url("img/Serie.png");
 }
 
 #kopenhagen {
-  background-image: url("Kopenhagen.png");
+  background-image: url("img/Kopenhagen.png");
 }
 
 .project-text {
