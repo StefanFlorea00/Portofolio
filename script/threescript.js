@@ -11,14 +11,19 @@ let bgOn = true;
 document.querySelector("#bg-btn").addEventListener("click", toggle3D);
 
 function toggle3D(event) {
+  console.log("aaaaaaaaaaaaaaaaaa");
   bgOn = !bgOn;
   if (bgOn) {
     document.querySelector("canvas").classList.remove("hidden");
     event.target.classList.add("active");
+    document.documentElement.style.setProperty("--main-text-color", "#ffffff");
+    document.querySelector(".page-wrapper").style.setProperty("grid-template-columns", "2fr 3fr 0fr");
     render();
   } else if (!bgOn) {
     document.querySelector("canvas").classList.add("hidden");
     event.target.classList.remove("active");
+    document.documentElement.style.setProperty("--main-text-color", "#040404");
+    document.querySelector(".page-wrapper").style.setProperty("grid-template-columns", "1fr 4fr 1fr");
   }
 }
 
@@ -149,10 +154,7 @@ function updateCamera(ev) {
   cube2.position.y = -4.5 + window.scrollY / 400.0;
 }
 
-function moveCameraMouse(ev) {
-  console.log(ev.clientX);
-  console.log(ev.clientY);
-}
+function moveCameraMouse(ev) {}
 
 window.addEventListener("mousemove", moveCameraMouse);
 window.addEventListener("scroll", updateCamera);

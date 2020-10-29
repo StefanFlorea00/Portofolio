@@ -1,7 +1,11 @@
+:root {
+  --main-text-color: #ffffff;
+}
+
 * {
   /* font-family: "Noto Sans", sans-serif; */
   font-family: "Montserrat", sans-serif;
-  color: white;
+  color: var(--main-text-color);
 }
 
 /* THREEJS */
@@ -41,23 +45,17 @@ p {
 .page-wrapper {
   display: grid;
   grid-template-areas:
-    "head head"
-    "side about"
-    "side projects"
-    "side personal"
-    "side contact"
-    "footer footer";
-  grid-template-columns: 2fr 3fr;
+    "head head head"
+    "sidel about sider"
+    "sidel projects sider"
+    "sidel personal sider"
+    "sidel contact sider"
+    "footer footer footer";
+  grid-template-columns: 2fr 3fr 0fr;
   position: absolute;
   z-index: 5;
   box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.55);
-
   width: 100%;
-}
-
-.fill {
-  width: 200px;
-  height: 800px;
 }
 
 /* ::-webkit-scrollbar {
@@ -84,13 +82,13 @@ nav ul {
 
 nav ul li {
   margin-right: 15px;
-  color: #ffffff;
+  color: var(--main-text-color);
   padding: 10px;
 }
 
 .nav-button {
   color: #ffffff;
-  width: 85px;
+  min-width: 5rem;
   text-align: center;
   border-bottom: solid 1px rgba(255, 255, 255, 0.5);
   transition: all 0.2s linear;
@@ -180,7 +178,7 @@ h2 {
   opacity: 0;
   grid-area: about;
   scroll-snap-align: start;
-  height: 100vh;
+  margin-bottom: 8em;
 }
 
 .section-about p:first-child {
@@ -261,13 +259,13 @@ h2 {
 }
 
 .photography-img {
-  height: 500px;
+  height: 25vw;
   margin: 10px;
 }
 
 .blender-img {
   margin: 10px;
-  height: 300px;
+  height: 15vw;
   width: auto;
 }
 
@@ -281,7 +279,7 @@ h2 {
 }
 
 .social-icon {
-  height: 150px;
+  height: 8vw;
   margin-right: 15px;
 }
 
@@ -309,4 +307,65 @@ footer {
   grid-area: footer;
   background-color: gray;
   height: 25vh;
+}
+
+/* MOBILE */
+
+@media only screen and (max-width: 600px) {
+  nav ul {
+    flex-flow: column;
+  }
+
+  nav ul .nav-button:nth-child(5) {
+    margin-left: 0;
+  }
+
+  .page-wrapper {
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+
+  .project {
+    width: 80vw;
+    height: 55vw;
+  }
+
+  .btn-wrapper {
+    flex-flow: column;
+  }
+
+  .title-btn {
+    margin: 15px 0;
+    width: auto;
+  }
+
+  .social-icon {
+    width: auto;
+    height: 20vw;
+  }
+
+  .photography-img {
+    height: 100vw;
+  }
+
+  .blender-img {
+    width: 90vw;
+    height: auto;
+  }
+
+  .page-wrapper {
+    text-align: left;
+  }
+
+  .about-me-img {
+    width: 50vw;
+    height: auto;
+    margin: 0;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-about p {
+    width: 80vw;
+  }
 }
