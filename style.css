@@ -34,12 +34,32 @@ p {
   font-size: 1.3rem;
 }
 
+img {
+  opacity: 0;
+}
+
 .hidden {
   display: none;
 }
 
 .active {
   background-color: rgba(245, 133, 133, 0.8);
+}
+
+.center {
+  justify-content: space-evenly;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+
+.flex-even {
+  justify-content: space-evenly;
+}
+
+.flex-center {
+  justify-content: center;
 }
 
 .page-wrapper {
@@ -87,7 +107,7 @@ nav ul li {
 }
 
 .nav-button {
-  color: #ffffff;
+  color: var(--main-text-color)
   min-width: 5rem;
   text-align: center;
   border-bottom: solid 1px rgba(255, 255, 255, 0.5);
@@ -134,13 +154,14 @@ h1 {
   font-weight: 100;
   font-size: 4rem;
   margin-bottom: 5rem;
+  margin-left: 0;
 }
 
 h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 100;
   font-size: 2.5rem;
-  margin-bottom: 30px;
+  margin-top: 5rem;
 }
 
 .title-btn {
@@ -188,7 +209,6 @@ h2 {
 
 .about-me-img {
   height: 400px;
-  margin-right: 40px;
 }
 
 .text-wrapper {
@@ -199,6 +219,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
 }
+
 /* PROJECTS */
 
 .section-projects {
@@ -215,6 +236,8 @@ h2 {
   margin: 5px;
   position: relative;
   padding: 5px;
+  padding-left: 0;
+  padding-right: 10px;
   transition: all 0.2s ease-out;
   background-position: center;
   background-size: cover;
@@ -260,21 +283,17 @@ h2 {
   margin-bottom: 8em;
 }
 
-.section-personal h2 {
-  margin-top: 10rem;
-}
-
 .section-personal h2:first-of-type {
   margin-top: 0;
 }
 
 .photography-img {
   height: 25vw;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
 }
 
 .blender-img {
-  margin: 10px;
+  margin: 0 0 20px 0;
   height: 15vw;
   width: auto;
 }
@@ -291,6 +310,7 @@ h2 {
 .social-icon {
   height: 8vw;
   margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 /* TEXT FADE */
@@ -319,12 +339,21 @@ footer {
   height: 25vh;
 }
 
+.footer-wrapper {
+  margin-top: 100px;
+  text-align: center;
+}
+
 /* MOBILE */
 
 @media only screen and (max-width: 600px) {
   h1 {
     text-align: center;
   }
+
+  p {
+  }
+
   nav ul {
     flex-flow: column;
   }
@@ -345,6 +374,10 @@ footer {
     font-size: 3rem;
   }
 
+  .text-wrapper {
+    margin: 0;
+  }
+
   .project {
     width: 80vw;
     height: 55vw;
@@ -357,6 +390,11 @@ footer {
   .title-btn {
     margin: 15px 0;
     width: auto;
+  }
+
+  .center {
+    justify-content: center;
+    width: 80%;
   }
 
   .social-icon {

@@ -8,6 +8,7 @@ let camera, renderer;
 let controls;
 
 let bgOn = true;
+let mobile = false;
 document.querySelector("#bg-btn").addEventListener("click", toggle3D);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bgOn = false;
     console.log("agha");
     turnBg(bgOn);
+    mobile = true;
   }
 });
 
@@ -171,8 +173,11 @@ function updateCamera(ev) {
 
 function moveCameraMouse(ev) {}
 
+if(!mobile){
 window.addEventListener("mousemove", moveCameraMouse);
 window.addEventListener("scroll", updateCamera);
+}
+
 window.addEventListener("resize", onWindowResize, false);
 
 function onWindowResize() {

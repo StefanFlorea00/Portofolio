@@ -1,4 +1,4 @@
-let elementsArray = document.querySelectorAll(".page-wrapper div");
+let elementsArray = document.querySelectorAll(".page-wrapper *");
 window.addEventListener("scroll", fadeIn);
 
 fadeIn();
