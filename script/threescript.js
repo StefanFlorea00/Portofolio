@@ -23,6 +23,7 @@ function toggle3D(event) {
   if (bgOn) {
     event.target.classList.add("active");
     turnBg(bgOn);
+    render();
   } else if (!bgOn) {
     event.target.classList.remove("active");
     turnBg(bgOn);
@@ -34,7 +35,6 @@ function turnBg(bg){
     document.querySelector("canvas").classList.remove("hidden");
     document.documentElement.style.setProperty("--main-text-color", "#ffffff");
     document.querySelector(".page-wrapper").style.setProperty("grid-template-columns", "2fr 3fr 0fr");
-    render();
   } else if (!bg) {
     document.querySelector("canvas").classList.add("hidden");
     document.documentElement.style.setProperty("--main-text-color", "#040404");
