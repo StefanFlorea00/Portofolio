@@ -120,19 +120,20 @@ nav ul .nav-button:nth-child(5):hover {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20.5rem;
-  width: 50%;
+  width: 70%;
   display: block;
 }
 
 .title-name {
   margin-bottom: 10px;
+  width: 100%;
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 100;
   font-size: 4rem;
-  margin-bottom: 30px;
+  margin-bottom: 5rem;
 }
 
 h2 {
@@ -246,7 +247,8 @@ h2 {
   position: absolute;
   top: 75%;
   margin-left: 15px;
-  color: black;
+  color: #fff;
+  text-shadow: 1px 1px #000;
 }
 
 /* PERSONAL */
@@ -256,6 +258,14 @@ h2 {
   grid-area: personal;
   scroll-snap-align: start;
   margin-bottom: 8em;
+}
+
+.section-personal h2 {
+  margin-top: 10rem;
+}
+
+.section-personal h2:first-of-type {
+  margin-top: 0;
 }
 
 .photography-img {
@@ -312,6 +322,9 @@ footer {
 /* MOBILE */
 
 @media only screen and (max-width: 600px) {
+  h1 {
+    text-align: center;
+  }
   nav ul {
     flex-flow: column;
   }
@@ -322,6 +335,14 @@ footer {
 
   .page-wrapper {
     grid-template-columns: 1fr 4fr 1fr;
+  }
+
+  .title-wrapper {
+    width: 100%;
+  }
+
+  .title-wrapper h1 {
+    font-size: 3rem;
   }
 
   .project {

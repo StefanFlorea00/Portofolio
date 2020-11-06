@@ -10,18 +10,33 @@ let controls;
 let bgOn = true;
 document.querySelector("#bg-btn").addEventListener("click", toggle3D);
 
+document.addEventListener('DOMContentLoaded', () => {
+  if(window.innerHeight<=800){
+    bgOn = false;
+    console.log("agha");
+    turnBg(bgOn);
+  }
+});
+
 function toggle3D(event) {
-  console.log("aaaaaaaaaaaaaaaaaa");
   bgOn = !bgOn;
   if (bgOn) {
-    document.querySelector("canvas").classList.remove("hidden");
     event.target.classList.add("active");
+    turnBg(bgOn);
+  } else if (!bgOn) {
+    event.target.classList.remove("active");
+    turnBg(bgOn);
+  }
+}
+
+function turnBg(bg){
+  if (bg) {
+    document.querySelector("canvas").classList.remove("hidden");
     document.documentElement.style.setProperty("--main-text-color", "#ffffff");
     document.querySelector(".page-wrapper").style.setProperty("grid-template-columns", "2fr 3fr 0fr");
     render();
-  } else if (!bgOn) {
+  } else if (!bg) {
     document.querySelector("canvas").classList.add("hidden");
-    event.target.classList.remove("active");
     document.documentElement.style.setProperty("--main-text-color", "#040404");
     document.querySelector(".page-wrapper").style.setProperty("grid-template-columns", "1fr 4fr 1fr");
   }
@@ -65,14 +80,14 @@ function addGeometry() {
   const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
   const geometry2 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
   const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-  cube = new THREE.Mesh(geometry, material);
-  cube2 = new THREE.Mesh(geometry2, material);
-  cube.position.set(0, -2, -3);
-  cube.rotation.set(0, 1, 1);
-  scene.add(cube);
-  cube2.position.set(0, -4, -3);
-  cube2.rotation.set(0, 1, 1);
-  scene.add(cube2);
+  // cube = new THREE.Mesh(geometry, material);
+  // cube2 = new THREE.Mesh(geometry2, material);
+  // cube.position.set(0, -2, -3);
+  // cube.rotation.set(0, 1, 1);
+  // scene.add(cube);
+  // cube2.position.set(0, -4, -3);
+  // cube2.rotation.set(0, 1, 1);
+  // scene.add(cube2);
 }
 
 function addPostProcess() {
@@ -121,16 +136,16 @@ function addLights() {
 function animate() {
   if (!CAMERASTOP) {
     camera.position.z -= 0.005;
-    if (camera.position.z <= -10) camera.position.z = 0;
+    if (camera.position.z <= -20) camera.position.z = 5;
   }
 
-  cube.position.z -= 0.005;
-  cube.rotation.y += 0.01;
-  cube.rotation.z += 0.01;
+  // cube.position.z -= 0.005;
+  // cube.rotation.y += 0.01;
+  // cube.rotation.z += 0.01;
 
-  cube2.position.z -= 0.005;
-  cube2.rotation.y += 0.01;
-  cube2.rotation.z += 0.01;
+  // cube2.position.z -= 0.005;
+  // cube2.rotation.y += 0.01;
+  // cube2.rotation.z += 0.01;
 
   if (spiral) spiral.rotation.z += 0.001;
 
@@ -150,8 +165,8 @@ function getRandomNr(min, max) {
 
 function updateCamera(ev) {
   if (window.scrollY <= 800) camera.rotation.y = -window.scrollY / 2000.0;
-  cube.position.y = -2.3 + window.scrollY / 400.0;
-  cube2.position.y = -4.5 + window.scrollY / 400.0;
+  // cube.position.y = -2.3 + window.scrollY / 400.0;
+  // cube2.position.y = -4.5 + window.scrollY / 400.0;
 }
 
 function moveCameraMouse(ev) {}
